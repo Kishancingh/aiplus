@@ -12,6 +12,51 @@
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
   <style>
+    /* MOBILE HERO / RESPONSIVENESS FIXES */
+@media (max-width: 767px) {
+  /* Make the two-column hero stack into one column */
+  .grid.md\:grid-cols-2,
+  .grid.md\:grid-cols-2 > * {
+    grid-template-columns: 1fr !important; /* force single column */
+  }
+
+  /* Reduce big paddings that cause overflow */
+  .max-w-6xl { padding-left: 1rem !important; padding-right: 1rem !important; }
+
+  /* Smaller hero heading & tighter spacing */
+  .hero-grid-bg { background-size: 28px 28px; }
+  .relative.z-10.flex { gap: .6rem; } /* reduce spacing inside left column */
+  h1 { font-size: 1.6rem !important; line-height: 1.18 !important; }
+
+  /* Make any card or panel full width and remove large fixed paddings */
+  .glass-panel, .rounded-3xl, .lift-card {
+    width: 100% !important;
+    padding: 0.9rem !important;
+    margin: 0 !important;
+  }
+
+  /* Ensure all form controls are responsive */
+  input, textarea, select, .glass-panel input, .glass-panel textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Remove any horizontal overflow from absolutely positioned decorations */
+  .ai-eye, .blob, #bgCanvas { max-width: 100%; left: 0; right: 0; }
+
+  /* Hide or tone down oversized decorative elements */
+  .ai-eye { display: none !important; }
+  .blob { filter: blur(20px); opacity: .4; }
+
+  /* Ensure no element creates horizontal scroll */
+  html, body { overflow-x: hidden !important; }
+
+  /* Make navbar/CTA wrap correctly */
+  header .max-w-6xl { display: flex; flex-direction: row; flex-wrap: wrap; gap: .5rem; align-items: center; }
+  header nav { width: 100%; order: 3; display: none; } /* keep hidden by default for mobile nav button */
+}
+
     /* RESET + ANTI SIDE-SCROLL */
     html, body {
       margin: 0;
