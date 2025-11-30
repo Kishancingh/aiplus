@@ -480,21 +480,22 @@
     <div class="max-w-6xl mx-auto flex items-center justify-between px-3 md:px-4 py-3">
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-rose-500 via-red-700 to-fuchsia-500 flex items-center justify-center shadow-lg shadow-rose-500/70">
-          <!-- 
+              <!-- 
       PREMIUM CREATIV PLUS LOGO SVG 
       Copy starting from <svg> to </svg>
     -->
     <svg width="256" height="256" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
         <defs>
-            <!-- 1. The Premium Gradient (Red to Magenta) -->
+            <!-- 1. The "Site-Themed" Dark Wine Gradient -->
+            <!-- Sampled from the "AI AUTOMATION" text and dark UI cards -->
             <linearGradient id="premiumGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#FF4B4B" /> <!-- Vibrant Red -->
-                <stop offset="100%" stop-color="#D41C8C" /> <!-- Deep Magenta -->
+                <stop offset="0%" stop-color="#9C1848" /> <!-- Rich Raspberry/Wine -->
+                <stop offset="100%" stop-color="#420A25" /> <!-- Deep Velvet Plum -->
             </linearGradient>
 
             <!-- 2. Soft Shadow for Depth -->
             <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
-                <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.2"/>
+                <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="black" flood-opacity="0.3"/>
             </filter>
         </defs>
 
@@ -502,8 +503,8 @@
         <rect x="0" y="0" width="512" height="512" rx="120" fill="url(#premiumGradient)" />
 
         <!-- LOGO GROUP -->
-        <!-- Scaled up by 1.35x (35% bigger) to fit the container perfectly -->
-        <g transform="translate(256, 256) scale(1.35)" filter="url(#softGlow)">
+        <!-- Scaled up to 1.5 (bigger) and moved UP to Y=230 to center visually -->
+        <g transform="translate(256, 230) scale(1.5)" filter="url(#softGlow)">
             
             <!-- We draw from center (0,0) for easier rotation -->
             
