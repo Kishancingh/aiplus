@@ -616,7 +616,14 @@
       </nav>
 
       <div class="mt-auto pt-6">
-        <a href="https://wa.me/919155567700" target="_blank" rel="noopener"
+       <a href="https://wa.me/919155567700"
+   target="_blank"
+   rel="noopener"
+   onclick="trackEvent('whatsapp_click', {
+     conversion_type: 'lead_intent',
+     location: 'floating_button'
+   })">
+
            class="w-full py-3 rounded-xl bg-gradient-to-r from-rose-500 via-red-500 to-fuchsia-500 text-sm font-semibold flex items-center justify-center gap-2 shadow-lg shadow-rose-500/50 mb-3">
           <i class='bx bxl-whatsapp text-lg'></i>
           <span>Chat with us on WhatsApp</span>
