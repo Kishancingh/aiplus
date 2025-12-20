@@ -1764,7 +1764,7 @@
       requestAnimationFrame(loop);
     }
   </script>
-  <script>
+<script>
   document.getElementById("contactForm").addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -1797,11 +1797,14 @@
     })
     .then(res => res.json())
     .then(() => {
-      successBox.classList.remove("hidden"); // ✅ SHOW SUCCESS MESSAGE
+      successBox.classList.remove("hidden"); // ✅ show success
       form.reset();
 
+      // ✅ GA4 lead event (THIS WAS NOT FIRING BEFORE)
       if (typeof trackEvent === "function") {
-        trackEvent("lead_submit", { method: "form" });
+        trackEvent("lead_submit", {
+          method: "form"
+        });
       }
     })
     .catch(() => {
@@ -1813,7 +1816,6 @@
     });
   });
 </script>
-
 
 </body>
 </html>
