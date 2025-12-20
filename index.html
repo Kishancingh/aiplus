@@ -10,6 +10,15 @@
 
   gtag('config', 'G-NX40JSQLHL');
 </script>
+
+  <script>
+  function trackEvent(eventName, params = {}) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params);
+    }
+  }
+</script>
+
   
   <meta charset="UTF-8" />
   <title>Creativ Plus • Elite AI Automation Agency</title>
@@ -481,7 +490,7 @@
   </div>
 
   <!-- WhatsApp FAB -->
-  <a href="https://wa.me/919155567700" target="_blank" rel="noopener" class="whatsapp-fab" aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/919155567700" target="_blank" onclick="trackEvent('whatsapp_click', { location: 'floating_button' })">
     <i class='bx bxl-whatsapp'></i>
   </a>
 
@@ -561,7 +570,7 @@
         <a href="#roi" class="hover:text-rose-400 flex items-center gap-1">
           <i class='bx bx-calculator text-xs'></i><span>ROI</span>
         </a>
-        <a href="#contact" class="hover:text-rose-400 flex items-center gap-1">
+        <a href="#contact"    onclick="trackEvent('cta_click', { cta: 'Get AI Consultation' })">
           <i class='bx bx-envelope text-xs'></i><span>Contact</span>
         </a>
       </nav>
