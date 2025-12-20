@@ -11,6 +11,15 @@
   gtag('config', 'G-NX40JSQLHL');
 </script>
 
+  <script>
+  function trackEvent(eventName, params = {}) {
+    if (typeof gtag === 'function') {
+      gtag('event', eventName, params);
+    }
+  }
+</script>
+
+
   <meta charset="UTF-8" />
   <title>Creativ Plus • Elite AI Automation Agency</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
