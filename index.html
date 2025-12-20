@@ -1572,6 +1572,12 @@
               <textarea rows="4" class="w-full bg-transparent outline-none text-sm" placeholder="Describe your current process, tools and targets."></textarea>
             </div>
           </div>
+            <!-- Success message -->
+<div id="formSuccess"
+     class="hidden mb-4 rounded-xl border border-emerald-500/40 bg-emerald-500/10 px-4 py-3 text-emerald-300 text-sm flex items-center gap-2">
+  <i class='bx bx-check-circle text-lg'></i>
+  <span>Thank you! Your request has been received. Our team will contact you shortly.</span>
+</div>
           <button type="submit" class="w-full py-2.5 bg-gradient-to-r from-rose-500 via-red-500 to-fuchsia-500 rounded-md text-sm font-medium flex items-center justify-center gap-2 shadow-lg shadow-rose-500/50">
             <i class='bx bx-send'></i>
             <span>Request a strategy session</span>
@@ -1754,6 +1760,14 @@
     e.preventDefault();
 
     const form = e.target;
+    const successBox = document.getElementById("formSuccess");
+    const submitBtn = form.querySelector('button[type="submit"]');
+
+    // Hide success message before submit
+    successBox.classList.add("hidden");
+
+    submitBtn.disabled = true;
+    submitBtn.innerText = "Submitting...";
 
     const data = {
       name: form.querySelector('input[placeholder="Enter your full name"]').value,
@@ -1764,20 +1778,33 @@
       message: form.querySelector("textarea").value,
       page: window.location.href
     };
-    
-      fetch("https://script.google.com/macros/s/AKfycbxH2Ntc4T_x1wCd57oBA5M9yA8iWsKwpQm_IfnS1Kwi1ILghEI2PnP7qUktddKGv2kq/exec", {
-  method: "POST",
-  body: JSON.stringify(data),
-  headers: {
-    "Content-Type": "text/plain;charset=utf-8"
-  }
-})
 
+    fetch("https://script.google.com/macros/s/AKfycbxH2Ntc4T_x1wCd57oBA5M9yA8iWsKwpQm_IfnS1Kwi1ILghEI2PnP7qUktddKGv2kq/exec", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      }
+    })
+    .then(res => res.json())
+    .then(() => {
+      successBox.classList.remove("hidden"); // ✅ SHOW SUCCESS MESSAGE
+      form.reset();
+
+      if (typeof trackEvent === "function") {
+        trackEvent("lead_submit", { method: "form" });
+      }
+    })
     .catch(() => {
-      alert("❌ Submission failed. Please try WhatsApp instead.");
+      alert("Something went wrong. Please try WhatsApp.");
+    })
+    .finally(() => {
+      submitBtn.disabled = false;
+      submitBtn.innerText = "Request a strategy session";
     });
   });
 </script>
+
 
 </body>
 </html>
